@@ -1,9 +1,16 @@
 package main.task01;
 
-public class QuadraticEquation {
+public final class QuadraticEquationUtils {
+    /**
+     * Don't let anyone instantiate this class.
+     */
+    private QuadraticEquationUtils() {}
+
+    public static final double ANY_NUMBER = -7.0;
+
     /**
      * the square equation has the form:
-     * ax^2 + bx + c = -7;
+     * ax^2 + bx + c = ANY_NUMBER;
      *
      * @param a - first or senior coefficient;
      * @param b - the second coefficient;
@@ -13,11 +20,10 @@ public class QuadraticEquation {
      * if a = 0 or the expression has no roots return null;
      */
     public static double[] calculate(double a, double b, double c) {
-        c = c + 7.0;
-        double d = b * b - 4 * a * c;
-        if (a == 0 || d < 0) {
+        double d = b * b - 4.0 * a * (c - ANY_NUMBER);
+        if (a == 0.0 || d < 0.0) {
             return null;
         }
-        return new double[]{(-1 * b + Math.sqrt(d)) / 2 / a, (-1 * b - Math.sqrt(d)) / 2 / a};
+        return new double[]{(-b + Math.sqrt(d)) / 2.0 / a, (-b - Math.sqrt(d)) / 2.0 / a};
     }
 }
